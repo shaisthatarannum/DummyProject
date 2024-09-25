@@ -1,0 +1,251 @@
+import React from 'react';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import Home from './components/Home';
+import Menu from './components/Menu';
+import About from './components/About';
+import Contact from './components/Contact';
+import Login from './components/Login';
+import OurStory from './components/OurStory';
+import SpecialDish from './components/SpecialDish';
+import DeliciousMenu from './components/DeliciousMenu';
+import './App.css';
+
+function App() {
+  return (
+    <Router>
+      <div className="App">
+        <header className="App-header">
+          <img src="/assets/logo.png" alt="Restaurant Logo" className="logo" />
+          <nav className="navbar">
+            <Link to="/">Home</Link>
+            <Link to="/menu">Menu</Link>
+            <Link to="/about">About Us</Link>
+            <Link to="/contact">Contact</Link>
+            <Link to="/login">Login</Link>
+            <Link to="/reserve" className="reserve-button">Reserve a Table</Link>
+          </nav>
+        </header>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/menu" component={Menu} />
+          <Route path="/about" component={About} />
+          <Route path="/contact" component={Contact} />
+          <Route path="/login" component={Login} />
+        </Switch>
+      </div>
+    </Router>
+  );
+}
+
+export default App;
+
+
+
+
+
+
+
+
+import React from 'react';
+import './Home.css'; // Optional for styling
+
+function Home() {
+  return (
+    <main className="home">
+      <h1 className="dine-code">Dine and Code</h1>
+      <h2 className="debug-hunger">Debug Your Hunger Here</h2>
+      <Link to="/menu" className="view-menu-button">View Menu</Link>
+    </main>
+  );
+}
+
+export default Home;
+
+
+import React from 'react';
+import './Menu.css'; // Optional for styling
+
+function Menu() {
+  return (
+    <div className="menu">
+      <h1>Nothing brings people together like good food</h1>
+      <div className="menu-section">
+        <h2>Breakfast</h2>
+        <img src="/assets/breakfast.jpg" alt="Breakfast" />
+        <Link to="/menu/breakfast" className="view-menu-button">View Menu</Link>
+      </div>
+      <div className="menu-section">
+        <h2>Cafe</h2>
+        <img src="/assets/cafe.jpg" alt="Cafe" />
+        <Link to="/menu/cafe" className="view-menu-button">View Menu</Link>
+      </div>
+      <div className="menu-section">
+        <h2>Meals</h2>
+        <img src="/assets/meals.jpg" alt="Meals" />
+        <Link to="/menu/meals" className="view-menu-button">View Menu</Link>
+      </div>
+    </div>
+  );
+}
+
+export default Menu;
+
+
+
+
+import React from 'react';
+import './OurStory.css'; // Optional for styling
+
+function OurStory() {
+  return (
+    <div className="our-story">
+      <img src="/assets/story.jpg" alt="Our Story" />
+      <div className="story-content">
+        <h2>Our Story</h2>
+        <p>Our story goes here. This is where we share the journey of our restaurant and our passion for food.</p>
+      </div>
+    </div>
+  );
+}
+
+export default OurStory;
+
+
+
+import React from 'react';
+import './SpecialDish.css'; // Optional for styling
+
+function SpecialDish() {
+  return (
+    <div className="special-dish">
+      <img src="/assets/special.jpg" alt="Special Dish" />
+      <div className="dish-content">
+        <h2>Our Special Dish</h2>
+        <h3>Rustic Chicken Curry</h3>
+        <h3>Ragi Delight</h3>
+        <p>Description of the special dish goes here.</p>
+        <Link to="/menu" className="view-menu-button">View Menu</Link>
+      </div>
+    </div>
+  );
+}
+
+export default SpecialDish;
+
+
+
+
+import React from 'react';
+import './DeliciousMenu.css'; // Optional for styling
+
+function DeliciousMenu() {
+  return (
+    <div className="delicious-menu">
+      <h2>Delicious Menu</h2>
+      <div className="menu-items">
+        <div className="menu-item">
+          <img src="/assets/dish1.jpg" alt="Dish 1" />
+          <h3>Dish Name 1</h3>
+          <p>Description of Dish 1</p>
+          <p>$10.00</p>
+        </div>
+        <div className="menu-item">
+          <img src="/assets/dish2.jpg" alt="Dish 2" />
+          <h3>Dish Name 2</h3>
+          <p>Description of Dish 2</p>
+          <p>$12.00</p>
+        </div>
+        <div className="menu-item">
+          <img src="/assets/dish3.jpg" alt="Dish 3" />
+          <h3>Dish Name 3</h3>
+          <p>Description of Dish 3</p>
+          <p>$15.00</p>
+        </div>
+        <div className="menu-item">
+          <img src="/assets/dish4.jpg" alt="Dish 4" />
+          <h3>Dish Name 4</h3>
+          <p>Description of Dish 4</p>
+          <p>$8.00</p>
+        </div>
+      </div>
+      <Link to="/menu" className="view-menu-button">View Menu</Link>
+    </div>
+  );
+}
+
+export default DeliciousMenu;
+
+
+
+
+
+.App {
+  text-align: center;
+}
+
+.App-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+  height: 50px;
+}
+
+.navbar {
+  display: flex;
+  gap: 20px;
+}
+
+.view-menu-button {
+  background-color: #e63946;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
+}
+
+.home {
+  background-image: url('/assets/food-background.jpg');
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.dine-code {
+  font-size: 2.5rem;
+}
+
+.debug-hunger {
+  font-size: 3rem;
+}
+
+.menu {
+  padding: 20px;
+}
+
+.menu-section {
+  margin: 20px 0;
+}
+
+.our-story, .special-dish, .delicious-menu {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.story-content, .dish-content {
+  margin-left: 20px;
+}
+
+.menu-items {
+  display: flex;
+  justify-content: space-between;
+}
+
