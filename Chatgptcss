@@ -1,0 +1,206 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+  height: 50px;
+}
+
+.navbar {
+  display: flex;
+  gap: 20px;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+}
+
+.reserve-button {
+  background-color: #e63946;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: white;
+}
+
+.view-menu-button {
+  background-color: #e63946;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
+}
+
+.home {
+  background-image: url('/assets/food-background.jpg');
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.dine-code {
+  font-size: 2.5rem;
+}
+
+.debug-hunger {
+  font-size: 3rem;
+}
+
+.menu {
+  padding: 20px;
+}
+
+.menu-section {
+  margin: 20px 0;
+}
+
+.our-story,
+.special-dish,
+.delicious-menu {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.story-content,
+.dish-content {
+  margin-left: 20px;
+}
+
+.menu-items {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
+
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url('/assets/food-background.jpg') no-repeat center center;
+  background-size: cover;
+  color: white;
+}
+
+
+
+.menu {
+  padding: 20px;
+}
+
+.menu-section {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.menu-section img {
+  width: 80%; /* Adjust as necessary */
+  border-radius: 10px;
+}
+
+.view-menu-button {
+  margin-top: 10px;
+}
+
+
+.about {
+  padding: 20px;
+  text-align: center;
+}
+
+
+.contact {
+  padding: 20px;
+  text-align: center;
+}
+
+.contact-info {
+  margin: 20px 0;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-form label {
+  margin: 10px 0;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px;
+  margin: 5px 0;
+  width: 300px; /* Adjust as necessary */
+}
+
+.contact-form button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #e63946;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+
+.our-story {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.our-story img {
+  width: 50%; /* Adjust as necessary */
+  border-radius: 10px;
+}
+
+.story-content {
+  margin-left: 20px;
+}
+
+
+
+.special-dish {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.special-dish img {
+  width: 50%; /* Adjust as necessary */
+  border-radius: 10px;
+}
+
+.dish-content {
+  margin-left: 20px;
+}
+
+
+
+.delicious-menu {
+  padding: 20px;
+  text-align: center;
+}
+
+.menu-items {
+  display
+
