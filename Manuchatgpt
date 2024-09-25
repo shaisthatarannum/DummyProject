@@ -1,0 +1,171 @@
+import React from 'react';
+import './App.css';
+
+function App() {
+  return (
+    <div className="App">
+      <header>
+        <Navbar />
+      </header>
+      <main>
+        <HeroSection />
+      </main>
+    </div>
+  );
+}
+
+const Navbar = () => {
+  return (
+    <nav className="navbar">
+      <div className="navbar-left">
+        <img src="logo.png" alt="Techie Tummy Restaurant" className="logo" />
+      </div>
+      <div className="navbar-center">
+        <ul>
+          <li><a href="/">HOME</a></li>
+          <li><a href="/">MENU</a></li>
+          <li><a href="/">ABOUT US</a></li>
+          <li><a href="/">CONTACT</a></li>
+          <li><a href="/">LOGIN</a></li>
+        </ul>
+      </div>
+      <div className="navbar-right">
+        <p>Embassy Tech Village, Bangalore City | Daily: 8:00 am to 10:00 pm</p>
+        <p>📞 +91 8919427309 | 📧 techietummy@restaurant.com</p>
+        <button className="reserve-button">Reserve a Table</button>
+      </div>
+    </nav>
+  );
+};
+
+const HeroSection = () => {
+  return (
+    <section className="hero">
+      <div className="hero-content">
+        <h1>Debug your hunger here</h1>
+        <button className="menu-button">VIEW OUR MENU</button>
+      </div>
+    </section>
+  );
+};
+
+export default App;
+
+
+
+
+
+
+
+..............
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+.App {
+  text-align: center;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #000;
+  color: #fff;
+}
+
+.navbar-left {
+  flex: 1;
+}
+
+.logo {
+  height: 50px;
+}
+
+.navbar-center ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  margin: 0;
+}
+
+.navbar-center li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navbar-right {
+  text-align: right;
+  flex: 2;
+}
+
+.reserve-button {
+  background-color: #e3b04b;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.hero {
+  background-image: url('sushi-background.jpg'); /* replace with the actual image URL */
+  background-size: cover;
+  background-position: center;
+  color: white;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.hero-content h1 {
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+.menu-button {
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.menu-button:hover {
+  background-color: #e3b04b;
+  border-color: #e3b04b;
+}
+
+
+
+
+
+.........
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Techie Tummy Restaurant</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
+
+
+
+
+......
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './App.css';
+import App from './App';
+
+ReactDOM.render(<App />, document.getElementById('root'));
