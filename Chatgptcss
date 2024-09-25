@@ -19,6 +19,14 @@
   gap: 20px;
 }
 
+
+
+
+
+
+
+
+
 .navbar a {
   color: white;
   text-decoration: none;
@@ -277,3 +285,25 @@
 .view-menu-button:hover {
   background-color: #d62839; /* Darker shade on hover */
 }
+
+
+
+
+
+
+
+
+
+ERROR in ./src/App.js 5:0-80
+Module not found: Error: Can't resolve 'react-router-dom' in 'C:\trailresto\project\src'
+ERROR in ./src/styles/Home.css (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[5].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[5].use[2]!./node_modules/source-map-loader/dist/cjs.js!./src/styles/Home.css) 5:36-91
+Module not found: Error: Can't resolve '/assets/food-background.jpg' in 'C:\trailresto\project\src\styles'
+ERROR
+[eslint] 
+src\components\DeliciousMenu.js
+  Line 34:8:  'Link' is not defined  react/jsx-no-undef
+
+src\components\Menu.js
+  Line 11:10:  'Link' is not defined  react/jsx-no-undef
+  Line 16:10:  'Link' is not defined  react/jsx-no-undef
+  Line 21:10:  'Link' is not defined  react/jsx-no-undef
