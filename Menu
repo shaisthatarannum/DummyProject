@@ -1,4 +1,4 @@
-// src/components/Menu.js
+hu// src/components/Menu.js
 import React from "react";
 import { Link } from "react-router-dom";
 import "./../styles/Menu.css";
@@ -488,3 +488,209 @@ export default App;
 .order-button:hover {
   background-color: #e1b40e; /* Darker yellow on hover */
 }
+
+
+
+
+
+
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import LoginPage from "./components/LoginPage"; // Your login page component
+import SignupPage from "./components/SignupPage"; // Your signup page component
+import Menu from "./components/Menu"; // Your menu page component
+import OrderPage from "./components/OrderPage"; // Import the OrderPage
+
+const App = () => {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<LoginPage />} /> {/* Home route for Login */}
+        <Route path="/signup" element={<SignupPage />} /> {/* Route for Signup */}
+        <Route path="/menu" element={<Menu />} /> {/* Route for Menu */}
+        <Route path="/order" element={<OrderPage />} /> {/* Route for Order Page */}
+      </Routes>
+    </Router>
+  );
+};
+
+export default App;
+
+
+
+import React, { useState } from "react";
+import Dish from "./Dish";
+import "./../styles/Menu.css";
+
+const OrderPage = () => {
+  const [quantities, setQuantities] = useState({
+    idly: 0,
+    dosa: 0,
+    scrambledEggs: 0,
+    sandwich: 0,
+    healthyBreakfastBowl: 0,
+    smoothies: 0,
+    pastry: 0,
+    coffee: 0,
+    proteinShake: 0,
+    pizza: 0,
+    burger: 0,
+    macAndCheese: 0,
+    pasta: 0,
+    paneerRiceBowl: 0,
+    riceAndDalTadka: 0,
+    butterChicken: 0,
+    butterNaan: 0,
+    friedRice: 0,
+  });
+
+  const handleIncrement = (dish) => {
+    setQuantities({ ...quantities, [dish]: quantities[dish] + 1 });
+  };
+
+  const handleDecrement = (dish) => {
+    if (quantities[dish] > 0) {
+      setQuantities({ ...quantities, [dish]: quantities[dish] - 1 });
+    }
+  };
+
+  const handleAddToCart = (dish) => {
+    alert(`${dish} added to cart! Quantity: ${quantities[dish]}`);
+    // Implement cart functionality as needed
+  };
+
+  return (
+    <div className="menu-container">
+      <nav className="menu-nav">
+        <a href="#breakfast">Breakfast</a>
+        <a href="#cafe">Cafe</a>
+        <a href="#meals">Meals</a>
+      </nav>
+
+      <div id="breakfast" className="menu-section">
+        <h2>Breakfast</h2>
+        <Dish name="Idly" price="$2.50" description="Steamed rice cakes" image="/public/backgroundimage.jpg">
+          <div className="quantity-controls">
+            <button onClick={() => handleDecrement("idly")}>-</button>
+            <span>{quantities.idly}</span>
+            <button onClick={() => handleIncrement("idly")}>+</button>
+            <button onClick={() => handleAddToCart("Idly")}>Add to Cart</button>
+          </div>
+        </Dish>
+        <Dish name="Dosa" price="$3.00" description="Crispy rice crepe" image="/public/backgroundimage.jpg">
+          <div className="quantity-controls">
+            <button onClick={() => handleDecrement("dosa")}>-</button>
+            <span>{quantities.dosa}</span>
+            <button onClick={() => handleIncrement("dosa")}>+</button>
+            <button onClick={() => handleAddToCart("Dosa")}>Add to Cart</button>
+          </div>
+        </Dish>
+        <Dish name="Scrambled Eggs" price="$4.00" description="Eggs with herbs" image="/public/backgroundimage.jpg">
+          <div className="quantity-controls">
+            <button onClick={() => handleDecrement("scrambledEggs")}>-</button>
+            <span>{quantities.scrambledEggs}</span>
+            <button onClick={() => handleIncrement("scrambledEggs")}>+</button>
+            <button onClick={() => handleAddToCart("Scrambled Eggs")}>Add to Cart</button>
+          </div>
+        </Dish>
+        <Dish name="Sandwich" price="$3.50" description="Veggie sandwich" image="/public/backgroundimage.jpg">
+          <div className="quantity-controls">
+            <button onClick={() => handleDecrement("sandwich")}>-</button>
+            <span>{quantities.sandwich}</span>
+            <button onClick={() => handleIncrement("sandwich")}>+</button>
+            <button onClick={() => handleAddToCart("Sandwich")}>Add to Cart</button>
+          </div>
+        </Dish>
+        <Dish name="Healthy Breakfast Bowl" price="$5.00" description="Fruits & grains bowl" image="/public/backgroundimage.jpg">
+          <div className="quantity-controls">
+            <button onClick={() => handleDecrement("healthyBreakfastBowl")}>-</button>
+            <span>{quantities.healthyBreakfastBowl}</span>
+            <button onClick={() => handleIncrement("healthyBreakfastBowl")}>+</button>
+            <button onClick={() => handleAddToCart("Healthy Breakfast Bowl")}>Add to Cart</button>
+          </div>
+        </Dish>
+      </div>
+
+      <div id="cafe" className="menu-section">
+        <h2>Cafe</h2>
+        {/* Repeat the same structure for Cafe dishes */}
+        {/* Example for Smoothies */}
+        <Dish name="Smoothies" price="$4.50" description="Fruit smoothies" image="/public/backgroundimage.jpg">
+          <div className="quantity-controls">
+            <button onClick={() => handleDecrement("smoothies")}>-</button>
+            <span>{quantities.smoothies}</span>
+            <button onClick={() => handleIncrement("smoothies")}>+</button>
+            <button onClick={() => handleAddToCart("Smoothies")}>Add to Cart</button>
+          </div>
+        </Dish>
+        {/* Add similar blocks for other Cafe dishes */}
+      </div>
+
+      <div id="meals" className="menu-section">
+        <h2>Meals</h2>
+        {/* Repeat the same structure for Meal dishes */}
+        {/* Example for Mac and Cheese */}
+        <Dish name="Mac and Cheese" price="$7.00" description="Classic mac and cheese" image="/public/backgroundimage.jpg">
+          <div className="quantity-controls">
+            <button onClick={() => handleDecrement("macAndCheese")}>-</button>
+            <span>{quantities.macAndCheese}</span>
+            <button onClick={() => handleIncrement("macAndCheese")}>+</button>
+            <button onClick={() => handleAddToCart("Mac and Cheese")}>Add to Cart</button>
+          </div>
+        </Dish>
+        {/* Add similar blocks for other Meal dishes */}
+      </div>
+    </div>
+  );
+};
+
+export default OrderPage;
+
+
+import React from "react";
+import "./../styles/Dish.css";
+
+const Dish = ({ name, price, description, image, children }) => {
+  return (
+    <div className="dish-container">
+      <img src={image} alt={name} />
+      <h3>{name}</h3>
+      <p>{description}</p>
+      <p className="price">{price}</p>
+      {children} {/* Render children for quantity controls */}
+    </div>
+  );
+};
+
+export default Dish;
+
+
+
+/* Add this to your Menu.css */
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.quantity-controls button {
+  padding: 5px 10px;
+  margin: 0 5px;
+  background-color: #3498db; /* Blue color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.quantity-controls button:hover {
+  background-color: #2980b9; /* Darker blue on hover */
+}
+
+.quantity-controls span {
+  margin: 0 10px;
+  font-size: 18px;
+}
+
+
+
