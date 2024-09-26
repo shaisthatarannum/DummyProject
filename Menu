@@ -714,4 +714,7 @@ Search for the keywords to learn more about each error.
 webpack compiled with 1 error
 
 
-
+import React from "react";
+import { useNavigate, Link } from "react-router-dom"; // Import Link
+import Dish from "./Dish";
+import "./../styles/Menu.css";
