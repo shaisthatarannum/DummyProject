@@ -1467,3 +1467,146 @@ function App() {
 
 export default App;
 
+
+
+
+
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './Cart.css'; // Make sure to have some styling for your Cart page
+
+const Cart = ({ cart, updateQuantity }) => {
+  // Calculate total price
+  const calculateTotal = () => {
+    return cart.reduce((total, item) => total + (item.price.slice(1) * item.quantity), 0);
+  };
+
+  return (
+    <div className="cart-container">
+      <h2>Your Cart</h2>
+
+      {/* Check if the cart is empty */}
+      {cart.length === 0 ? (
+        <div className="empty-cart">
+          <p>Your cart is empty.</p>
+          <Link to="/menu" className="go-back-button">
+            Go back to Menu
+          </Link>
+        </div>
+      ) : (
+        <div className="cart-items">
+          {cart.map((item, index) => (
+            <div key={index} className="cart-item">
+              <div className="item-info">
+                <h3>{item.name}</h3>
+                <p>Price: {item.price}</p>
+              </div>
+              <div className="quantity-controls">
+                <button
+                  onClick={() =>
+                    updateQuantity(item.name, item.quantity > 1 ? item.quantity - 1 : 1)
+                  }
+                >
+                  -
+                </button>
+                <span>{item.quantity}</span>
+                <button onClick={() => updateQuantity(item.name, item.quantity + 1)}>+</button>
+              </div>
+              <div className="item-total">
+                <p>Total: ${(item.price.slice(1) * item.quantity).toFixed(2)}</p>
+              </div>
+            </div>
+          ))}
+          {/* Order Summary */}
+          <div className="order-summary">
+            <h3>Order Summary</h3>
+            <p>Total Amount: ${calculateTotal().toFixed(2)}</p>
+            <Link to="/checkout" className="checkout-button">
+              Proceed to Checkout
+            </Link>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Cart;
+
+
+
+
+.cart-container {
+  padding: 20px;
+  text-align: center;
+}
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f8f8f8;
+  padding: 10px;
+  margin: 10px 0;
+  width: 80%;
+  border-radius: 10px;
+}
+
+.item-info h3 {
+  margin: 0;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+}
+
+.quantity-controls button {
+  background-color: #3498db;
+  color: white;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.quantity-controls button:hover {
+  background-color: #2980b9;
+}
+
+.order-summary {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #ecf0f1;
+  border-radius: 10px;
+}
+
+.checkout-button {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.checkout-button:hover {
+  background-color: #218838;
+}
+
+.go-back-button {
+  background-color: #3498db;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.go-back-button:hover {
+  background-color: #2980b9;
+}
