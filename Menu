@@ -1399,3 +1399,71 @@ const App = () => {
 export default App;
 
 
+
+
+
+
+
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import LoginPage from './components/Login'; // Your login page component
+import SignupPage from './components/Signup'; // Your signup page component
+import Menu from './components/Menu'; // Menu page component
+import OrderPage from './components/OrderPage'; // Order page component
+import Cart from './components/Cart'; // Cart page component
+import Checkout from './components/Checkout'; // Checkout page component
+
+function App() {
+  const [cart, setCart] = useState([]);
+
+  // Function to add a dish to the cart
+  const addToCart = (dish) => {
+    setCart((prevCart) => {
+      const existingItem = prevCart.find(item => item.name === dish.name);
+      if (existingItem) {
+        return prevCart.map(item => item.name === dish.name ? { ...item, quantity: item.quantity + 1 } : item);
+      } else {
+        return [...prevCart, { ...dish, quantity: 1 }];
+      }
+    });
+  };
+
+  // Function to update the quantity of items in the cart
+  const updateQuantity = (name, quantity) => {
+    setCart((prevCart) =>
+      prevCart.map(item =>
+        item.name === name ? { ...item, quantity } : item
+      )
+    );
+  };
+
+  return (
+    <Router>
+      <Routes>
+        {/* Route for Login Page */}
+        <Route path="/" element={<LoginPage />} />
+        
+        {/* Route for Signup Page */}
+        <Route path="/signup" element={<SignupPage />} />
+        
+        {/* Route for Menu Page */}
+        <Route path="/menu" element={<Menu addToCart={addToCart} />} />
+        
+        {/* Route for Order Page */}
+        <Route path="/order" element={<OrderPage cart={cart} addToCart={addToCart} />} />
+        
+        {/* Route for Cart Page */}
+        <Route path="/cart" element={<Cart cart={cart} updateQuantity={updateQuantity} />} />
+        
+        {/* Route for Checkout Page */}
+        <Route path="/checkout" element={<Checkout />} />
+        
+        {/* Default fallback for unmatched routes */}
+        <Route path="*" element={<div>404 Not Found</div>} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
+
