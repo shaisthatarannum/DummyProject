@@ -338,3 +338,325 @@ button {
   padding: 10px
 
 export default App;
+
+
+
+
+...........
+// src/App.js
+import React, { useState } from "react";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
+import "./App.css";
+
+function App() {
+  const [isLogin, setIsLogin] = useState(true);
+
+  const toggleAuthMode = () => {
+    setIsLogin(!isLogin);
+  };
+
+  return (
+    <div className="App">
+      {isLogin ? (
+        <Login onSwitchToSignup={toggleAuthMode} />
+      ) : (
+        <Signup onSwitchToLogin={toggleAuthMode} />
+      )}
+    </div>
+  );
+}
+
+export default App;
+
+
+
+// src/components/Login.js
+import React, { useState } from "react";
+import "./../styles/Login.css";
+
+const Login = ({ onSwitchToSignup }) => {
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+    phone: ""
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Login data:", formData);
+  };
+
+  return (
+    <div className="login-container">
+      <h2>Login</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="input-field">
+          <label>Username</label>
+          <input
+            type="text"
+            name="username"
+            value={formData.username}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="input-field">
+          <label>Password</label>
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="input-field">
+          <label>Phone Number</label>
+          <input
+            type="text"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <button type="submit">Login</button>
+      </form>
+      <p>
+        Don't have an account?{" "}
+        <span className="switch-link" onClick={onSwitchToSignup}>
+          Sign up
+        </span>
+      </p>
+    </div>
+  );
+};
+
+export default Login;
+
+
+// src/components/Signup.js
+import React, { useState } from "react";
+import "./../styles/Signup.css";
+
+const Signup = ({ onSwitchToLogin }) => {
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+    confirmPassword: "",
+    phone: ""
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (formData.password !== formData.confirmPassword) {
+      alert("Passwords do not match!");
+      return;
+    }
+    console.log("Signup data:", formData);
+  };
+
+  return (
+    <div className="signup-container">
+      <h2>Signup</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="input-field">
+          <label>Username</label>
+          <input
+            type="text"
+            name="username"
+            value={formData.username}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="input-field">
+          <label>Password</label>
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="input-field">
+          <label>Confirm Password</label>
+          <input
+            type="password"
+            name="confirmPassword"
+            value={formData.confirmPassword}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="input-field">
+          <label>Phone Number</label>
+          <input
+            type="text"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <button type="submit">Sign Up</button>
+      </form>
+      <p>
+        Already have an account?{" "}
+        <span className="switch-link" onClick={onSwitchToLogin}>
+          Log in
+        </span>
+      </p>
+    </div>
+  );
+};
+
+export default Signup;
+
+
+
+
+/* src/styles/Login.css */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-image: url("https://your-dark-theme-image-url.com");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.login-container {
+  width: 400px; /* Increased width */
+  margin: 100px auto;
+  padding: 30px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  color: #fff;
+}
+
+h2 {
+  text-align: center;
+  color: #fff;
+}
+
+.input-field {
+  margin-bottom: 20px;
+}
+
+.input-field label {
+  display: block;
+  margin-bottom: 8px;
+  color: #ccc;
+}
+
+.input-field input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.switch-link {
+  color: #007bff;
+  cursor: pointer;
+  text-align: center;
+  display: block;
+}
+
+
+/* src/styles/Signup.css */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-image: url("https://your-dark-theme-image-url.com");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.signup-container {
+  width: 400px; /* Increased width */
+  margin: 100px auto;
+  padding: 30px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  color: #fff;
+}
+
+h2 {
+  text-align: center;
+  color: #fff;
+}
+
+.input-field {
+  margin-bottom: 20px;
+}
+
+.input-field label {
+  display: block;
+  margin-bottom: 8px;
+  color: #ccc;
+}
+
+.input-field input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.switch-link {
+  color: #007bff;
+  cursor: pointer;
+  text-align: center;
+  display: block;
+}
+
+
+
+
