@@ -718,3 +718,168 @@ import React from "react";
 import { useNavigate, Link } from "react-router-dom"; // Import Link
 import Dish from "./Dish";
 import "./../styles/Menu.css";
+
+
+// src/components/Dish.js
+
+import React, { useState } from "react";
+import "./../styles/Dish.css";
+
+const Dish = ({ name, price, description, image }) => {
+  const [quantity, setQuantity] = useState(0);
+
+  const increment = () => {
+    setQuantity(prev => prev + 1);
+  };
+
+  const decrement = () => {
+    if (quantity > 0) {
+      setQuantity(prev => prev - 1);
+    }
+  };
+
+  const addToCart = () => {
+    if (quantity > 0) {
+      alert(`${quantity} ${name}(s) added to cart.`);
+      // Here you can integrate with your cart logic
+    } else {
+      alert("Please select a quantity to add to cart.");
+    }
+  };
+
+  return (
+    <div className="dish">
+      <img src={image} alt={name} className="dish-image" />
+      <div className="dish-details">
+        <h3>{name}</h3>
+        <p>{description}</p>
+        <p><strong>{price}</strong></p>
+
+        {/* Quantity Controls */}
+        <div className="quantity-controls">
+          <button onClick={decrement} disabled={quantity === 0}>-</button>
+          <span>{quantity}</span>
+          <button onClick={increment}>+</button>
+        </div>
+
+        {/* Add to Cart Button */}
+        <button 
+          className="add-to-cart-button" 
+          onClick={addToCart}
+          disabled={quantity === 0}
+        >
+          Add to Cart
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default Dish;
+
+
+
+/* src/styles/Dish.css */
+
+.dish {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.dish-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.dish-details {
+  margin-top: 10px;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.quantity-controls button {
+  padding: 5px 10px;
+  margin: 0 5px;
+}
+
+.add-to-cart-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-to-cart-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+
+
+
+// src/components/Menu.js
+
+import React from "react";
+import { Link } from "react-router-dom"; // Import Link for navigation
+import Dish from "./Dish";
+import "./../styles/Menu.css";
+
+const OrderPage = () => {
+  return (
+    <div className="menu-container">
+      <nav className="menu-nav">
+        <a href="#breakfast">Breakfast</a>
+        <a href="#cafe">Cafe</a>
+        <a href="#meals">Meals</a>
+      </nav>
+
+      <div id="breakfast" className="menu-section">
+        <h2>Breakfast</h2>
+        <Dish name="Idly" price="$2.50" description="Steamed rice cakes" image="/public/backgroundimage.jpg" />
+        <Dish name="Dosa" price="$3.00" description="Crispy rice crepe" image="/public/backgroundimage.jpg" />
+        <Dish name="Scrambled Eggs" price="$4.00" description="Eggs with herbs" image="/public/backgroundimage.jpg" />
+        <Dish name="Sandwich" price="$3.50" description="Veggie sandwich" image="/public/backgroundimage.jpg" />
+        <Dish name="Healthy Breakfast Bowl" price="$5.00" description="Fruits & grains bowl" image="/public/backgroundimage.jpg" />
+      </div>
+
+      <div id="cafe" className="menu-section">
+        <h2>Cafe</h2>
+        <Dish name="Smoothies" price="$4.50" description="Fruit smoothies" image="/public/backgroundimage.jpg" />
+        <Dish name="Pastry" price="$2.50" description="Delicious pastries" image="/public/backgroundimage.jpg" />
+        <Dish name="Coffee" price="$2.00" description="Hot coffee" image="/public/backgroundimage.jpg" />
+        <Dish name="Protein Shake" price="$5.00" description="High protein shake" image="/public/backgroundimage.jpg" />
+        <Dish name="Pizza" price="$8.00" description="Cheesy pizza" image="/public/backgroundimage.jpg" />
+        <Dish name="Burger" price="$6.00" description="Beef or veggie burger" image="/public/backgroundimage.jpg" />
+      </div>
+
+      <div id="meals" className="menu-section">
+        <h2>Meals</h2>
+        <Dish name="Mac and Cheese" price="$7.00" description="Classic mac and cheese" image="/public/backgroundimage.jpg" />
+        <Dish name="Pasta" price="$6.50" description="Creamy pasta" image="/public/backgroundimage.jpg" />
+        <Dish name="Paneer Rice Bowl" price="$8.00" description="Indian paneer with rice" image="/public/backgroundimage.jpg" />
+        <Dish name="Rice & Dal Tadka" price="$6.50" description="Rice with lentils" image="/public/backgroundimage.jpg" />
+        <Dish name="Butter Chicken" price="$10.00" description="Indian butter chicken" image="/public/backgroundimage.jpg" />
+        <Dish name="Butter Naan" price="$2.50" description="Fluffy naan bread" image="/public/backgroundimage.jpg" />
+        <Dish name="Fried Rice" price="$7.00" description="Asian-style fried rice" image="/images/fried-rice.jpg" />
+      </div>
+
+      {/* Order Now Button */}
+      <div className="order-now-container">
+        <Link to="/order" className="order-button">Order Now</Link>
+      </div>
+    </div>
+  );
+};
+
+export default OrderPage;
+
