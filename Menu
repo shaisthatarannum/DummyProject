@@ -1371,3 +1371,31 @@ function App() {
 }
 
 export default App;
+
+
+
+
+
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import LoginPage from "./components/Login"; // Your login page component
+import SignupPage from "./components/Signup"; // Your signup page component
+import Menu from "./components/Menu"; // Your menu page component
+import OrderPage from "./components/OrderPage"; // Import the OrderPage
+
+const App = () => {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<LoginPage />} /> {/* Home route for Login */}
+        <Route path="/signup" element={<SignupPage />} /> {/* Route for Signup */}
+        <Route path="/menu" element={<Menu />} /> {/* Route for Menu */}
+        <Route path="/order" element={<OrderPage />} /> {/* Route for Order Page */}
+      </Routes>
+    </Router>
+  );
+};
+
+export default App;
+
+
