@@ -1,0 +1,253 @@
+// src/components/Menu.js
+import React from "react";
+import { Link } from "react-router-dom";
+import "./../styles/Menu.css";
+
+const Menu = () => {
+  return (
+    <div className="menu-container">
+      <h1>Restaurant Menu</h1>
+
+      <div id="breakfast">
+        <h2>Breakfast</h2>
+        {/* List of breakfast dishes */}
+        <div className="dish">
+          <h3>Idly</h3>
+          <p>Price: $5</p>
+        </div>
+        <div className="dish">
+          <h3>Dosa</h3>
+          <p>Price: $6</p>
+        </div>
+        <div className="dish">
+          <h3>Scrambled Eggs</h3>
+          <p>Price: $7</p>
+        </div>
+        <div className="dish">
+          <h3>Sandwich</h3>
+          <p>Price: $4</p>
+        </div>
+        <div className="dish">
+          <h3>Healthy Breakfast Bowl</h3>
+          <p>Price: $8</p>
+        </div>
+      </div>
+
+      <div id="cafe">
+        <h2>Cafe</h2>
+        {/* List of cafe dishes */}
+        <div className="dish">
+          <h3>Smoothies</h3>
+          <p>Price: $5</p>
+        </div>
+        <div className="dish">
+          <h3>Pastry</h3>
+          <p>Price: $3</p>
+        </div>
+        <div className="dish">
+          <h3>Coffee</h3>
+          <p>Price: $2</p>
+        </div>
+        <div className="dish">
+          <h3>Protein Shake</h3>
+          <p>Price: $4</p>
+        </div>
+        <div className="dish">
+          <h3>Pizza</h3>
+          <p>Price: $10</p>
+        </div>
+        <div className="dish">
+          <h3>Burger</h3>
+          <p>Price: $8</p>
+        </div>
+      </div>
+
+      <div id="meals">
+        <h2>Meals</h2>
+        {/* List of meal dishes */}
+        <div className="dish">
+          <h3>Mac and Cheese</h3>
+          <p>Price: $9</p>
+        </div>
+        <div className="dish">
+          <h3>Pasta</h3>
+          <p>Price: $11</p>
+        </div>
+        <div className="dish">
+          <h3>Indian Paneer Rice Bowl</h3>
+          <p>Price: $10</p>
+        </div>
+        <div className="dish">
+          <h3>Rice and Dal Tadka</h3>
+          <p>Price: $7</p>
+        </div>
+        <div className="dish">
+          <h3>Butter Chicken with Butter Naan</h3>
+          <p>Price: $12</p>
+        </div>
+        <div className="dish">
+          <h3>Fried Rice</h3>
+          <p>Price: $8</p>
+        </div>
+      </div>
+
+      {/* Order Now Button */}
+      <Link to="/order" className="order-button">Order Now</Link>
+    </div>
+  );
+};
+
+export default Menu;
+
+
+
+
+
+
+
+// src/components/OrderPage.js
+import React, { useState } from "react";
+import "./../styles/OrderPage.css";
+
+const OrderPage = () => {
+  // Sample dish data for the order page
+  const dishes = [
+    { id: 1, name: "Idly", price: 5 },
+    { id: 2, name: "Dosa", price: 6 },
+    { id: 3, name: "Scrambled Eggs", price: 7 },
+    { id: 4, name: "Sandwich", price: 4 },
+    { id: 5, name: "Healthy Breakfast Bowl", price: 8 },
+    { id: 6, name: "Smoothies", price: 5 },
+    { id: 7, name: "Pastry", price: 3 },
+    { id: 8, name: "Coffee", price: 2 },
+    { id: 9, name: "Protein Shake", price: 4 },
+    { id: 10, name: "Pizza", price: 10 },
+    { id: 11, name: "Burger", price: 8 },
+    { id: 12, name: "Mac and Cheese", price: 9 },
+    { id: 13, name: "Pasta", price: 11 },
+    { id: 14, name: "Indian Paneer Rice Bowl", price: 10 },
+    { id: 15, name: "Rice and Dal Tadka", price: 7 },
+    { id: 16, name: "Butter Chicken with Butter Naan", price: 12 },
+    { id: 17, name: "Fried Rice", price: 8 }
+  ];
+
+  const [cart, setCart] = useState({});
+
+  const handleIncrement = (id) => {
+    setCart((prev) => ({
+      ...prev,
+      [id]: (prev[id] || 0) + 1
+    }));
+  };
+
+  const handleDecrement = (id) => {
+    setCart((prev) => ({
+      ...prev,
+      [id]: Math.max((prev[id] || 0) - 1, 0) // Prevents going below 0
+    }));
+  };
+
+  return (
+    <div className="order-page-container">
+      <h1>Order Page</h1>
+      {dishes.map((dish) => (
+        <div key={dish.id} className="dish">
+          <h3>{dish.name}</h3>
+          <p>Price: ${dish.price}</p>
+          <div className="cart-controls">
+            <button onClick={() => handleDecrement(dish.id)}>-</button>
+            <span>{cart[dish.id] || 0}</span>
+            <button onClick={() => handleIncrement(dish.id)}>+</button>
+            <button className="add-to-cart">Add to Cart</button>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default OrderPage;
+
+
+
+
+
+
+// src/App.js
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Login from "./components/Login";
+import Menu from "./components/Menu";
+import Signup from "./components/Signup";
+import OrderPage from "./components/OrderPage"; // Import OrderPage component
+import './App.css';
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/menu" element={<Menu />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/order" element={<OrderPage />} /> {/* Add OrderPage route */}
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
+
+
+
+
+
+
+
+
+/* src/styles/OrderPage.css */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.order-page-container {
+  background-image: url('/background.jpg'); /* Ensure this image is present */
+  background-size: cover;
+  padding: 20px;
+  color: #fff;
+}
+
+.dish {
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for dishes */
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+.cart-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+button {
+  background-color: #f1c40f; /* Button color */
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #e1b40e; /* Darker on hover */
+}
+
+.add-to-cart {
+  margin-left: 10px;
+}
+
+
+
+
+
