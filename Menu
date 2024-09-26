@@ -248,6 +248,73 @@ button:hover {
 }
 
 
+/* src/styles/Menu.css */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
 
+.menu-container {
+  background-image: url('/background.jpg'); /* Add the background image */
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+  font-size: 28px;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.dish {
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black for the dish box */
+  padding: 10px;
+  margin: 10px auto;
+  width: 80%;
+  border-radius: 8px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.dish h3 {
+  font-size: 22px;
+  margin: 0;
+}
+
+.dish p {
+  font-size: 18px;
+  margin: 5px 0 0;
+}
+
+.order-button {
+  display: inline-block;
+  margin-top: 30px;
+  background-color: #f1c40f; /* Yellow button */
+  color: black;
+  padding: 10px 20px;
+  font-size: 18px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.order-button:hover {
+  background-color: #e1b40e; /* Darker on hover */
+}
+
+#breakfast, #cafe, #meals {
+  padding-bottom: 20px;
+}
 
 
