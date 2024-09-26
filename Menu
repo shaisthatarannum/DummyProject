@@ -694,3 +694,24 @@ export default Dish;
 
 
 
+
+
+Local:            http://localhost:3000   
+  On Your Network:  http://10.34.34.246:3000
+Failed to compile.
+
+[eslint]
+src\components\Menu.js
+  Line 47:4:  'Link' is not defined  react/jsx-no-undef
+
+Search for the keywords to learn more about each error.
+ERROR in [eslint]
+src\components\Menu.js
+  Line 47:4:  'Link' is not defined  react/jsx-no-undef
+
+Search for the keywords to learn more about each error.
+
+webpack compiled with 1 error
+
+
+
