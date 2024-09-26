@@ -797,3 +797,299 @@ button:hover {
   display: block;
   margin-top: 15px;
 }
+1111111111111111
+
+
+
+// src/components/Login.js
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./../styles/Login.css";
+
+const Login = () => {
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+    phone: ""
+  });
+
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Add authentication logic here if needed
+    navigate("/menu");
+  };
+
+  return (
+    <div className="login-container">
+      <h2>Login</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="input-field">
+          <label>Username</label>
+          <input
+            type="text"
+            name="username"
+            value={formData.username}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="input-field">
+          <label>Password</label>
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="input-field">
+          <label>Phone Number</label>
+          <input
+            type="text"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  );
+};
+
+export default Login;
+
+
+
+
+
+
+
+
+// src/components/Menu.js
+import React from "react";
+import Dish from "./Dish";
+import "./../styles/Menu.css";
+
+const Menu = () => {
+  return (
+    <div className="menu-container">
+      <nav className="menu-nav">
+        <a href="#breakfast">Breakfast</a>
+        <a href="#cafe">Cafe</a>
+        <a href="#meals">Meals</a>
+      </nav>
+
+      <div id="breakfast" className="menu-section">
+        <h2>Breakfast</h2>
+        <Dish name="Idly" price="$2.50" description="Steamed rice cakes" image="/images/idly.jpg" />
+        <Dish name="Dosa" price="$3.00" description="Crispy rice crepe" image="/images/dosa.jpg" />
+        <Dish name="Scrambled Eggs" price="$4.00" description="Eggs with herbs" image="/images/scrambled-eggs.jpg" />
+        <Dish name="Sandwich" price="$3.50" description="Veggie sandwich" image="/images/sandwich.jpg" />
+        <Dish name="Healthy Breakfast Bowl" price="$5.00" description="Fruits & grains bowl" image="/images/breakfast-bowl.jpg" />
+      </div>
+
+      <div id="cafe" className="menu-section">
+        <h2>Cafe</h2>
+        <Dish name="Smoothies" price="$4.50" description="Fruit smoothies" image="/images/smoothies.jpg" />
+        <Dish name="Pastry" price="$2.50" description="Delicious pastries" image="/images/pastry.jpg" />
+        <Dish name="Coffee" price="$2.00" description="Hot coffee" image="/images/coffee.jpg" />
+        <Dish name="Protein Shake" price="$5.00" description="High protein shake" image="/images/protein-shake.jpg" />
+        <Dish name="Pizza" price="$8.00" description="Cheesy pizza" image="/images/pizza.jpg" />
+        <Dish name="Burger" price="$6.00" description="Beef or veggie burger" image="/images/burger.jpg" />
+      </div>
+
+      <div id="meals" className="menu-section">
+        <h2>Meals</h2>
+        <Dish name="Mac and Cheese" price="$7.00" description="Classic mac and cheese" image="/images/mac-and-cheese.jpg" />
+        <Dish name="Pasta" price="$6.50" description="Creamy pasta" image="/images/pasta.jpg" />
+        <Dish name="Paneer Rice Bowl" price="$8.00" description="Indian paneer with rice" image="/images/paneer-rice.jpg" />
+        <Dish name="Rice & Dal Tadka" price="$6.50" description="Rice with lentils" image="/images/rice-dal.jpg" />
+        <Dish name="Butter Chicken" price="$10.00" description="Indian butter chicken" image="/images/butter-chicken.jpg" />
+        <Dish name="Butter Naan" price="$2.50" description="Fluffy naan bread" image="/images/butter-naan.jpg" />
+        <Dish name="Fried Rice" price="$7.00" description="Asian-style fried rice" image="/images/fried-rice.jpg" />
+      </div>
+    </div>
+  );
+};
+
+export default Menu;
+
+
+
+
+
+
+// src/components/Dish.js
+import React from "react";
+import "./../styles/Dish.css";
+
+const Dish = ({ name, price, description, image }) => {
+  return (
+    <div className="dish">
+      <img src={image} alt={name} className="dish-image" />
+      <div className="dish-details">
+        <h3>{name}</h3>
+        <p>{description}</p>
+        <p><strong>{price}</strong></p>
+      </div>
+    </div>
+  );
+};
+
+export default Dish;
+
+
+/* src/styles/Menu.css */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.menu-container {
+  background-image: url('/menu-background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  padding: 50px 0;
+}
+
+.menu-nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.85); /* Dark, semi-transparent navbar */
+  padding: 15px 0;
+  text-align: center;
+  z-index: 1000; /* Keeps navbar above other content */
+}
+
+.menu-nav a {
+  color: #fff;
+  margin: 0 20px;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.menu-nav a:hover {
+  color: #f1c40f; /* Hover effect: gold */
+}
+
+.menu-section {
+  padding: 100px 0;
+  margin-top: 80px; /* Adds space to avoid overlap with navbar */
+  text-align: center;
+}
+
+.menu-section h2 {
+  color: #fff;
+  font-size: 36px;
+  margin-bottom: 40px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Text shadow for better readability */
+}
+
+/* Style for each dish block */
+.dish {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.9); /* Slight transparency */
+  border-radius: 10px;
+  margin: 20px;
+  padding: 15px;
+  width: 250px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.dish:hover {
+  transform: translateY(-5px); /* Slight lift effect on hover */
+}
+
+.dish img.dish-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.dish-details {
+  text-align: left;
+  padding: 10px;
+}
+
+.dish-details h3 {
+  margin: 10px 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.dish-details p {
+  font-size: 14px;
+  color: #666;
+}
+
+.dish-details strong {
+  color: #000;
+  font-size: 16px;
+}
+
+
+
+
+/* src/styles/Dish.css */
+
+.dish {
+  background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white background */
+  border-radius: 10px; /* Rounded corners */
+  margin: 20px; /* Margin around each dish */
+  padding: 15px; /* Inner padding */
+  width: 250px; /* Fixed width for consistency */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  transition: transform 0.3s ease; /* Smooth transformation on hover */
+}
+
+.dish:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+}
+
+.dish-image {
+  width: 100%; /* Full width for responsive design */
+  height: 150px; /* Fixed height for uniformity */
+  object-fit: cover; /* Cover to maintain aspect ratio */
+  border-radius: 10px; /* Rounded corners for the image */
+}
+
+.dish-details {
+  text-align: left; /* Align text to the left */
+  padding: 10px; /* Padding around the text details */
+}
+
+.dish-details h3 {
+  margin: 10px 0; /* Margin for spacing */
+  font-size: 18px; /* Font size for dish name */
+  color: #333; /* Dark gray for the name */
+}
+
+.dish-details p {
+  font-size: 14px; /* Smaller font size for description */
+  color: #666; /* Medium gray for description text */
+}
+
+.dish-details strong {
+  color: #000; /* Bold color for price */
+  font-size: 16px; /* Slightly larger font size for price */
+}
+
+
