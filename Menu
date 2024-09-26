@@ -1137,6 +1137,237 @@ body, html {
     cursor: not-allowed;
   }
   
-  
-  
 
+
+// src/components/Cart.js
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './Cart.css'; // Make sure you add your styles here
+
+const Cart = ({ cart, updateQuantity }) => {
+  // Calculate the total price
+  const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+
+  return (
+    <div className="cart-page">
+      <h2>Your Cart</h2>
+
+      {cart.length === 0 ? (
+        <p>Your cart is empty! <Link to="/">Go back to Menu</Link></p>
+      ) : (
+        <>
+          <div className="cart-items">
+            {cart.map((item) => (
+              <div key={item.name} className="cart-item">
+                <h3>{item.name}</h3>
+                <p>Price: ${item.price}</p>
+
+                <div className="quantity-controls">
+                  <button
+                    onClick={() => updateQuantity(item.name, item.quantity - 1)}
+                    disabled={item.quantity === 1}
+                  >
+                    -
+                  </button>
+                  <span>{item.quantity}</span>
+                  <button onClick={() => updateQuantity(item.name, item.quantity + 1)}>+</button>
+                </div>
+
+                <p>Total: ${item.price * item.quantity}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Order Summary */}
+          <div className="cart-summary">
+            <h3>Order Summary</h3>
+            <p>Total Price: ${totalPrice.toFixed(2)}</p>
+
+            {/* Checkout Button */}
+            <Link to="/checkout" className="checkout-button">Proceed to Checkout</Link>
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
+
+export default Cart;
+
+
+
+
+// src/components/Checkout.js
+import React from 'react';
+import './Checkout.css';
+
+const Checkout = () => {
+  return (
+    <div className="checkout-page">
+      <h2>Checkout</h2>
+      <p>Thank you for your order! We are processing it.</p>
+    </div>
+  );
+};
+
+export default Checkout;
+
+/* src/styles/Cart.css */
+.cart-page {
+  padding: 20px;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cart-items {
+  margin-bottom: 20px;
+}
+
+.cart-item {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cart-item h3 {
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.cart-item p {
+  margin: 5px 0;
+}
+
+.quantity-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.quantity-controls button {
+  padding: 5px 10px;
+  margin: 0 5px;
+  background-color: #3498db; /* Blue color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.quantity-controls button:disabled {
+  background-color: #ccc;
+}
+
+.quantity-controls span {
+  font-size: 16px;
+}
+
+.cart-summary {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cart-summary h3 {
+  margin-bottom: 15px;
+}
+
+.cart-summary p {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.checkout-button {
+  display: inline-block;
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  margin-top: 15px;
+}
+
+.checkout-button:hover {
+  background-color: #218838;
+}
+
+
+
+
+/* src/styles/Checkout.css */
+.checkout-page {
+  padding: 20px;
+  text-align: center;
+}
+
+.checkout-page h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.checkout-page p {
+  font-size: 18px;
+}
+
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Menu from './components/Menu';
+import OrderPage from './components/OrderPage';
+import Cart from './components/Cart';
+import Checkout from './components/Checkout';  // Import the Checkout component
+
+function App() {
+  const [cart, setCart] = useState([]);
+
+  const addToCart = (dish) => {
+    setCart((prevCart) => {
+      const existingItem = prevCart.find(item => item.name === dish.name);
+      if (existingItem) {
+        return prevCart.map(item => item.name === dish.name ? { ...item, quantity: item.quantity + 1 } : item);
+      } else {
+        return [...prevCart, { ...dish, quantity: 1 }];
+      }
+    });
+  };
+
+  const updateQuantity = (name, quantity) => {
+    setCart((prevCart) =>
+      prevCart.map(item =>
+        item.name === name ? { ...item, quantity } : item
+      )
+    );
+  };
+
+  return (
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route path="/" exact>
+            <Menu addToCart={addToCart} />
+          </Route>
+          <Route path="/order">
+            <OrderPage cart={cart} addToCart={addToCart} />
+          </Route>
+          <Route path="/cart">
+            <Cart cart={cart} updateQuantity={updateQuantity} />
+          </Route>
+          <Route path="/checkout">
+            <Checkout />
+          </Route>
+          <Route path="*">
+            <div>404 Not Found</div>
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+  );
+}
+
+export default App;
