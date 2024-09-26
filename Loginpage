@@ -658,5 +658,142 @@ button:hover {
 }
 
 
+######₹#
+
+/* src/styles/Login.css */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-image: url('/background.jpg'); /* Replace with your actual image path */
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.login-container {
+  width: 400px;
+  margin: 100px auto;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.1); /* Transparent white (10% opacity) */
+  border-radius: 10px;
+  color: #fff;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4); /* Slight shadow for better visibility */
+}
+
+h2 {
+  text-align: center;
+  color: #fff;
+}
+
+.input-field {
+  margin-bottom: 20px;
+}
+
+.input-field label {
+  display: block;
+  margin-bottom: 8px;
+  color: #ccc;
+}
+
+.input-field input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: none;
+}
+
+button {
+  width: 150px; /* Smaller width */
+  padding: 8px 12px; /* Adjust padding */
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto; /* Center the button */
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.switch-link {
+  color: #007bff;
+  cursor: pointer;
+  text-align: center;
+  display: block;
+  margin-top: 15px;
+}
 
 
+
+/* src/styles/Signup.css */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-image: url('/background.jpg'); /* Replace with your actual image path */
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.signup-container {
+  width: 400px;
+  margin: 100px auto;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.1); /* Transparent white (10% opacity) */
+  border-radius: 10px;
+  color: #fff;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4); /* Slight shadow for better visibility */
+}
+
+h2 {
+  text-align: center;
+  color: #fff;
+}
+
+.input-field {
+  margin-bottom: 20px;
+}
+
+.input-field label {
+  display: block;
+  margin-bottom: 8px;
+  color: #ccc;
+}
+
+.input-field input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: none;
+}
+
+button {
+  width: 150px; /* Smaller width */
+  padding: 8px 12px; /* Adjust padding */
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto; /* Center the button */
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.switch-link {
+  color: #007bff;
+  cursor: pointer;
+  text-align: center;
+  display: block;
+  margin-top: 15px;
+}
