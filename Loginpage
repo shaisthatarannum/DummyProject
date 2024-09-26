@@ -2618,3 +2618,96 @@ const Signup = () => {
 };
 
 export default Signup;
+
+
+
+// src/components/Signup.js
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./../styles/Signup.css";
+
+const Signup = () => {
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+    confirmPassword: "",
+    phone: ""
+  });
+
+  const [error, setError] = useState(""); // State to hold error message
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Check if passwords match
+    if (formData.password !== formData.confirmPassword) {
+      setError("Passwords didn't match");
+      return; // Prevent further processing
+    }
+
+    // Clear the error if passwords match
+    setError("");
+
+    // Here, you can add your signup logic (e.g., API call)
+    
+    // Navigate to the Login page upon successful signup
+    navigate("/");
+  };
+
+  return (
+    <div className="signup-container">
+      <h2>Sign Up</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="input-field">
+          <label>Username</label>
+          <input
+            type="text"
+            name="username"
+            value={formData.username}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="input-field">
+          <label>Password</label>
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="input-field">
+          <label>Confirm Password</label>
+          <input
+            type="password"
+            name="confirmPassword"
+            value={formData.confirmPassword}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="input-field">
+          <label>Phone Number</label>
+          <input
+            type="text"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        {error && <p className="error-message">{error}</p>} {/* Show error message */}
+        <button type="submit">Sign Up</button>
+      </form>
+    </div>
+  );
+};
+
+export default Signup;
