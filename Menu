@@ -1610,3 +1610,22 @@ export default Cart;
 .go-back-button:hover {
   background-color: #2980b9;
 }
+
+
+
+
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Menu from './components/Menu';  // Your Menu component
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Menu />} /> {/* Route for the Menu */}
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
