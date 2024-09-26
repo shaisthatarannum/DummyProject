@@ -1093,3 +1093,9 @@ body, html {
 }
 
 
+const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Login data:", formData);
+    // On successful login, redirect to menu
+    navigate("/menu");
+  };
