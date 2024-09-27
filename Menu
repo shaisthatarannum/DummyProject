@@ -1686,6 +1686,298 @@ Creamy tomato curry with tender chicken, served with naan or rice.
 Soft and fluffy naan brushed with rich butter, perfect for dipping.
 Stir-fried rice tossed with fresh vegetables and savory seasonings.
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import React from 'react';
+import './App.css';
+import Topbar from './components/Topbar';
+import Navbar from './components/Navbar';
+ 
+function App() {
+  return (
+    <div className="App">
+      <Topbar />
+      <hr className="thin-line" />
+      <Navbar />
+      <div className="main-content">
+        <h2>Dine & Code</h2>
+        <h1>Debug your hunger here</h1>
+        <button className="menu-btn">View Our Menu</button>
+      </div>
+            {/* Second Section - Scroll Down */}
+            <div className="second-section">      
+        <h1 className="section-title">Nothing Brings People Together Like Good Food</h1>
+ 
+        <div className="menu-gallery">
+          <div className="menu-item">
+            <img src="breakfast.jpg" alt="Breakfast" />
+            <h2>Breakfast</h2>
+            <p>Start your day with a delightful breakfast.</p>
+          </div>
+ 
+          <div className="menu-item">
+            <img src="cafe.jpg" alt="Cafe" />
+            <h2>Cafe</h2>
+            <p>Enjoy our signature cafe brews and bites.</p>
+          </div>
+ 
+          <div className="menu-item">
+            <img src="meals.jpg" alt="Meals" />
+            <h2>Meals</h2>
+            <p>Hearty meals to satisfy your hunger.</p>
+          </div>
+        </div>
+ 
+        {/* View Menu Button */}
+        <div className="view-menu-btn">
+          <button>View Full Menu</button>
+        </div>
+      </div>
+      {/* {thrid section about us} */}
+      <div className="about-us-section" id="about">
+        <div className="about-content" >
+          <h1>About Us</h1>
+          <p>
+            Welcome to Techie Tummy Restaurant! We bring you a unique dining experience. Our mission is to offer delicious meals made from the finest ingredients, all while providing an innovative environment that is unlike any other
+            Whether you're here for a quick coffee or a hearty meal, we’ve got something to satisfy everyone’s taste. Come experience our fusion of tech and tummy, where food meets innovation.
+          </p>
+        </div>
+        <div className="about-image">
+          <img src="about-banner.jpg" alt="About Us" />
+        </div>
+      </div>
+      {/* {4th section special dish section} */}
+      <div className="special-dish-section">
+        <div className="special-dish-image">
+          <img src="/special-dish.jpg" alt="Special Dish" />
+        </div>
+        <div className="special-dish-content">
+          <h1>Our Special Dish</h1>
+          <h2>Rustic Chicken Curry & Ragi Delight</h2>
+          <p>
+          Rustic Chicken Curry & Ragi Delight features tender chicken in a flavorful curry, served with healthy Ragi Delight made from finger millet(Ragi). This hearty dish is perfect for sharing and goodness, offering a mix of delicious taste and good nutrition.
+          </p>
+          <button className="menu-btn">View Full Menu</button>
+        </div>
+      </div>
+ 
+                {/* {delicious menu section} */}
+ 
+      <div className="delicious-menu-section" id="menu">
+      <h1 className="menus-title">Delicious Menu</h1>
+ 
+      <div className="menus-grid">
+        {/* Menu Item 1 */}
+        <div className="menus-item">
+          <img src="/menu-1.jpg" alt="Scrambled Egg" className="menus-image" />
+          <div className="menus-details">
+            <h2>Scrambled egg with Avocado toast</h2>
+            <p>Fluffy scrambled eggs on crispy avocado-topped toast, garnished with fresh herbs and sea salt.</p>
+            <span className="menus-price">₹250</span>
+          </div>
+        </div>
+ 
+        {/* Menu Item 2 */}
+        <div className="menus-item">
+          <img src="/menu-3.jpg" alt="Hot Chocolate" className="menus-image" />
+          <div className="menus-details">
+            <h2>Hot Chocolate</h2>
+            <p>Rich and creamy hot chocolate made with premium cocoa, topped with whipped cream.</p>
+            <span className="menus-price">₹250</span>
+          </div>
+        </div>
+ 
+        {/* Menu Item 3 */}
+        <div className="menus-item">
+          <img src="/menu-2.jpg" alt="Idly Vada" className="menus-image" />
+          <div className="menus-details">
+            <h2>Idly Vada</h2>
+            <p>A South Indian breakfast combo of soft steamed rice cakes (idly) and crispy lentil donuts (vada).</p>
+            <span className="menus-price">₹70</span>
+          </div>
+        </div>
+ 
+        {/* Menu Item 4 */}
+        <div className="menus-item">
+          <img src="/menu-4.jpg" alt="Mass Attack" className="menus-image" />
+          <div className="menus-details">
+            <h2>Mass Attack</h2>
+            <p>A powerful blend of strawberries, bananas, and gluten-free oats, with your choice of protein.</p>
+            <span className="menus-price">₹120</span>
+          </div>
+        </div>
+ 
+        {/* Menu Item 5 */}
+        <div className="menus-item">
+          <img src="/menu-5.jpg" alt="Hyderabadi Biryani" className="menus-image" />
+          <div className="menus-details">
+            <h2>Hyderabadi Biryani</h2>
+            <p>Aromatic biryani with tender meat and basmati rice, slow-cooked with spices and saffron.</p>
+            <span className="menus-price">₹270</span>
+          </div>
+        </div>
+ 
+        {/* Menu Item 6 */}
+        <div className="menus-item">
+          <img src="/menu-6.jpg" alt="Grain Veggie Bowl" className="menus-image" />
+          <div className="menus-details">
+            <h2>Grain Veggie Bowl</h2>
+            <p>A wholesome grain bowl with seasonal veggies and a tangy dressing for a satisfying meal.</p>
+            <span className="menus-price">₹300</span>
+          </div>
+        </div>
+      </div>
+ 
+      <button className="view-menus-btn">View All Menu</button>
+      </div>
+ 
+               {/* {reservationsection} */}
+ 
+      <div className="reservation-contact" id="reservation">
+      <div className="reservation-section">
+        <h2>Online Reservation</h2>
+        <p>Fill out the order form</p>
+        <form>
+          <label>Your Name</label>
+          <input type="text" placeholder="Your Name" />
+ 
+          <label>Your Phone Number</label>
+          <input type="text" placeholder="Your Phone Number" />
+ 
+          <label>Number of Persons</label>
+          <select>
+            {[...Array(7).keys()].map(i => (
+              <option key={i} value={i + 1}>{i + 1} Person</option>
+            ))}
+          </select>
+          <br></br>
+          <div className="form-row">
+            <label>Date</label>
+            <input type="date" name="Date" placeholder="Select Date" />
+            <lable>Time</lable>
+            <select name="Time" className="time-select">
+              <option value="8:00 AM">8:00 AM</option>
+              <option value="9:00 AM">9:00 AM</option>
+              <option value="10:00 AM">10:00 AM</option>
+              <option value="11:00 AM">11:00 AM</option>
+              <option value="12:00 PM">12:00 PM</option>
+              <option value="1:00 PM">1:00 PM</option>
+              <option value="2:00 PM">2:00 PM</option>
+              <option value="3:00 PM">3:00 PM</option>
+              <option value="4:00 PM">4:00 PM</option>
+              <option value="5:00 PM">5:00 PM</option>
+              <option value="6:00 PM">6:00 PM</option>
+              <option value="7:00 PM">7:00 PM</option>
+              <option value="8:00 PM">8:00 PM</option>
+              <option value="9:00 PM">9:00 PM</option>
+              <option value="10:00 PM">10:00 PM</option>
+            </select>
+          </div>
+         
+          <br>
+          </br>
+          <button type="submit">Book a Table</button>
+        </form>
+      </div>
+ 
+      <div className="contact-section">
+        <h2>Contact Us</h2>
+        <h3>Booking Request</h3>
+        <p>+91 8919427309</p>
+ 
+        <h3>Location</h3>
+        <p>Embassy tech village,
+           Bangalore City</p>
+ 
+        <h3>Break Time</h3>
+        <p>Monday to Sunday:</p>
+        <p>8:00 am – 11:00 am</p>
+ 
+        <h3>Lunch Time</h3>
+        <p>Monday to Sunday:</p>
+        <p>12:00 pm – 4:00 pm</p>
+ 
+        <h3>Dinner Time</h3>
+        <p>Monday to Sunday:</p>
+        <p> 5:00 pm – 10:00 pm</p>
+      </div>
+     </div>
+ 
+        {/* // {Finall section} */}
+      <div className="next-page-container">
+       {/* Left side navigation */}
+      <div className="left-side-nav">
+       <ul className="nav-list">
+      <li><a href="#home">Home</a></li><br></br>
+      <li><a href="#menu">Menu</a></li><br></br>
+      <li><a href="#about">About Us</a></li><br></br>
+      <li><a href="#reservation">Contact</a></li><br></br>
+      <li><a href="#login">Login</a></li>
+       </ul>
+     </div>
+ 
+      {/* Middle section with background and details */}
+       <div className="middle-section" >
+      <img src="logo.png" alt="Project Logo" className="project-logo" />
+     <div className="contact-details">
+      <p>Embassy Tech Village, Bangalore City</p>
+      <p>Email: techietummy@restaurant.com</p>
+      <p>Booking Request: +91 8919427309</p>
+      <p>Timings: 8.00 AM to 10.00 PM</p>
+      </div>
+     </div>
+ 
+      {/* Right side with an image */}
+      <div className="right-side-image">
+     <img src="shape-2.png" alt="Right-side-image" />
+     </div>
+   </div>
+  </div>
+ 
+  );
+}
+ 
+export default App;
+
+
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Menu from './components/Menu';  // Your Menu component
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Menu />} /> {/* Route for the Menu */}
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
+
 Tender chicken simmered in rich spices, served with traditional ragi balls.
 
 
