@@ -1982,3 +1982,113 @@ Tender chicken simmered in rich spices, served with traditional ragi balls.
 
 
 
+
+
+
+
+
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import Menu from './components/Menu';  // Your Menu component
+import './App.css'; // Assuming you have a CSS file for styles
+
+const App = () => {
+  return (
+    <Router>
+      <div className="app-container">
+        {/* Navigation Section */}
+        <div className="next-page-container">
+          {/* Left side navigation */}
+          <div className="left-side-nav">
+            <ul className="nav-list">
+              <li><Link to="/">Home</Link></li>
+              <br />
+              <li><Link to="/menu">Menu</Link></li>
+              <br />
+              <li><Link to="#about">About Us</Link></li>
+              <br />
+              <li><Link to="#reservation">Contact</Link></li>
+              <br />
+              <li><Link to="#login">Login</Link></li>
+            </ul>
+          </div>
+
+          {/* Middle section with background and details */}
+          <div className="middle-section">
+            <img src="logo.png" alt="Project Logo" className="project-logo" />
+            <div className="contact-details">
+              <p>Embassy Tech Village, Bangalore City</p>
+              <p>Email: techietummy@restaurant.com</p>
+              <p>Booking Request: +91 8919427309</p>
+              <p>Timings: 8.00 AM to 10.00 PM</p>
+            </div>
+          </div>
+
+          {/* Right side with an image */}
+          <div className="right-side-image">
+            <img src="shape-2.png" alt="Right-side-image" />
+          </div>
+        </div>
+
+        {/* Reservation Form Section */}
+        <div className="reservation-form">
+          <h2>Book a Table</h2>
+          <form>
+            <div className="form-row">
+              <label>Date</label>
+              <input type="date" name="Date" placeholder="Select Date" required />
+              <label>Time</label>
+              <select name="Time" className="time-select" required>
+                <option value="">Select Time</option>
+                <option value="8:00 AM">8:00 AM</option>
+                <option value="9:00 AM">9:00 AM</option>
+                <option value="10:00 AM">10:00 AM</option>
+                <option value="11:00 AM">11:00 AM</option>
+                <option value="12:00 PM">12:00 PM</option>
+                <option value="1:00 PM">1:00 PM</option>
+                <option value="2:00 PM">2:00 PM</option>
+                <option value="3:00 PM">3:00 PM</option>
+                <option value="4:00 PM">4:00 PM</option>
+                <option value="5:00 PM">5:00 PM</option>
+                <option value="6:00 PM">6:00 PM</option>
+                <option value="7:00 PM">7:00 PM</option>
+                <option value="8:00 PM">8:00 PM</option>
+                <option value="9:00 PM">9:00 PM</option>
+                <option value="10:00 PM">10:00 PM</option>
+              </select>
+            </div>
+            <br />
+            <button type="submit">Book a Table</button>
+          </form>
+
+          <div className="contact-section">
+            <h2>Contact Us</h2>
+            <h3>Booking Request</h3>
+            <p>+91 8919427309</p>
+
+            <h3>Location</h3>
+            <p>Embassy tech village, Bangalore City</p>
+
+            <h3>Break Time</h3>
+            <p>Monday to Sunday: 8:00 am – 11:00 am</p>
+
+            <h3>Lunch Time</h3>
+            <p>Monday to Sunday: 12:00 pm – 4:00 pm</p>
+
+            <h3>Dinner Time</h3>
+            <p>Monday to Sunday: 5:00 pm – 10:00 pm</p>
+          </div>
+        </div>
+
+        {/* Routes Section */}
+        <Routes>
+          <Route path="/menu" element={<Menu />} /> {/* Route for the Menu */}
+        </Routes>
+      </div>
+    </Router>
+  );
+}
+
+export default App;
+
+
